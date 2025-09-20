@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lara Agustina</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" type="x-icon" href="icon.png">
+</head>
+<body>
+    <div class="container">
+        <div class="top">
+            <img src="fondo.png" alt="">
+        </div>
+
+        <div class="info">
+
+            <div class="info_item">    
+                <img src="fecha.png" alt="">
+                <div class="item">
+                    <h3>Fecha</h3>
+                    <p>Sábado, 11 de Octubre de 2025</p>
+                </div>
+            </div>
+
+            <div class="info_item">    
+                <img src="hora.png" alt="">
+                <div class="item">
+                    <h3>Hora</h3>
+                    <p>20:30 hs</p>
+                </div>
+            </div>
+
+            <div class="info_item">    
+                <img src="ropa.png" alt="">
+                <div class="item">
+                    <h3>Vestimenta</h3>
+                    <p>Casual Elegante</p>
+                </div>
+            </div>
+                
+            <div class="info_item">    
+                <img src="ubi.png" alt="">
+                <div class="item">
+                    <h3>Lugar</h3>
+                    <p>Complejo recreativo Iplyc Av. Principal 123</p>
+                </div>
+            </div>
+        </div>
+
+        <form action="">
+            <p>COMPLETA LOS DATOS PARA CONFIRMAR TU PRESENCIA</p>
+            <input type="text" placeholder="NOMBRE Y APELLIDO">
+            <input type="number" placeholder="INVITADOS (CONTANDOTE A VOS)">
+            <button type="submit">CONFIRMAR</button>
+            <a href=""><button>NO PODRÉ ASISTIR</button></a>
+        </form>
+
+
+        <footer>
+            <div class="contact">
+                <h2>WHATSAPP</h2>
+                <p>3764-000000</p>
+            </div>
+
+            <div class="contact">
+                <h2>CORREO</h2>
+                <p>TUCORREO@MAIL.COM.AR</p>
+            </div>
+        </footer>
+
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBaERAIcUxOh5ZhidCA40XN8an5O5M5gIE",
+            authDomain: "laraxv-6dd3a.firebaseapp.com",
+            projectId: "laraxv-6dd3a",
+            storageBucket: "laraxv-6dd3a.firebasestorage.app",
+            messagingSenderId: "965965396309",
+            appId: "1:965965396309:web:2c32745c8a5f03d03dd7dc",
+            measurementId: "G-Y1MZ2XSQWC"
+        };
+
+        // Initialize Firebase (sin analytics)
+        const app = initializeApp(firebaseConfig);
+        </script>
+
+    <script type="module" src="app.js"></script>
+</body>
+</html>

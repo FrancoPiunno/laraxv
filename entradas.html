@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Confirmaciones</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" type="x-icon" href="icon.png">
+  <style>
+    body {
+      font-family: "Nohemi", Arial, sans-serif;
+      background: #fff6eb;
+      color: #242424;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 { text-align: center; margin-bottom: 10px; }
+    .total { text-align: center; font-size: 1.2rem; font-weight: 600; margin-bottom: 20px; }
+    .table-container { overflow-x: auto; }
+    table {
+      width: 100%; border-collapse: collapse; background: #fff;
+      border-radius: 12px; overflow: hidden; box-shadow: 0 3px 10px rgba(0,0,0,.08);
+    }
+    thead { background: #f5a4b1; color: white; }
+    th, td { padding: 12px 14px; text-align: left; border-bottom: 1px solid #eee; }
+    tr:last-child td { border-bottom: none; }
+    @media (max-width: 600px) {
+      table, thead, tbody, th, td, tr { display: block; }
+      thead { display: none; }
+      tr { margin-bottom: 15px; background: #fff; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,.05); padding: 10px; }
+      td { border: none; display: flex; justify-content: space-between; padding: 8px 10px; }
+      td::before { content: attr(data-label); font-weight: bold; color: #6e6a67; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Lista de Confirmaciones</h1>
+  <div class="total">Total invitados: <span id="total">0</span></div>
+  <div class="table-container">
+    <table id="tabla">
+      <thead>
+        <tr><th>Nombre</th><th>Invitados</th><th>Fecha</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <script type="module">
+    import { initializeApp, getApp, getApps } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+    import { getFirestore, collection, getDocs, orderBy, query } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBaERAIcUxOh5ZhidCA40XN8an5O5M5gIE",
+      authDomain: "laraxv-6dd3a.firebaseapp.com",
+      projectId: "laraxv-6dd3a",
+      storageBucket: "laraxv-6dd3a.firebasestorage.app",
+      messagingSenderId: "965965396309",
+      appId: "1:965965396309:web:2c32745c8a5f03d03dd7dc",
+      measurementId: "G-Y1MZ2XSQWC"
+    };
+    const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
+    const db  = getFirestore(app);
+
+    const tablaBody = document.querySelector("#tabla tbody");
+    const totalEl   = document.getElementById("total");
+
+    async function cargarConfirmaciones() {
+      tablaBody.innerHTML = "";
+      let total = 0;
+
+      const q = query(collection(db, "confirmaciones"), orderBy("createdAt", "desc"));
+      const snapshot = await getDocs(q);
+
+      snapshot.forEach(doc => {
+        const data = doc.data();
+        const nombre = data.nombre ?? "—";
+        const invitados = Number(data.invitados ?? 0);
+        const fecha = data.createdAt?.toDate().toLocaleString("es-AR") ?? "—";
+        total += invitados;
+
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td data-label="Nombre">${nombre}</td>
+          <td data-label="Invitados">${invitados}</td>
+          <td data-label="Fecha">${fecha}</td>
+        `;
+        tablaBody.appendChild(tr);
+      });
+
+      totalEl.textContent = total;
+    }
+
+    cargarConfirmaciones().catch(err => {
+      console.error("Error cargando confirmaciones:", err);
+      alert("No se pudo leer la base. Revisá reglas de Firestore.");
+    });
+  </script>
+</body>
+</html>

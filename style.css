@@ -1,0 +1,259 @@
+/* =========================================================
+   FUENTES LOCALES
+   ========================================================= */
+
+/* NOHEMI Variable (principal) */
+@font-face {
+  font-family: "Nohemi";
+  src: url("Nohemi-VF-BF6438cc58ad63d.ttf") format("truetype");
+  font-weight: 100 900;
+  font-stretch: 100%;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* NOHEMI fallbacks por peso */
+@font-face { font-family:"Nohemi"; src:url("Nohemi-Thin-BF6438cc57ef3bf.otf") format("opentype"), url("Nohemi-Thin-BF6438cc57ef3bf.ttf") format("truetype"); font-weight:100; font-style:normal; font-display:swap; }
+@font-face { font-family:"Nohemi"; src:url("Nohemi-ExtraLight-BF6438cc57e06d5.otf") format("opentype"), url("Nohemi-ExtraLight-BF6438cc58a2634.ttf") format("truetype"); font-weight:200; font-style:normal; font-display:swap; }
+@font-face { font-family:"Nohemi"; src:url("Nohemi-Light-BF6438cc58f570b.otf") format("opentype"), url("Nohemi-Light-BF6438cc5899919.ttf") format("truetype"); font-weight:300; font-style:normal; font-display:swap; }
+@font-face { font-family:"Nohemi"; src:url("Nohemi-Regular-BF6438cc5b98ffc.otf") format("opentype"), url("Nohemi-Regular-BF6438cc5b98f6c.ttf") format("truetype"); font-weight:400; font-style:normal; font-display:swap; }
+@font-face { font-family:"Nohemi"; src:url("Nohemi-Medium-BF6438cc588a399.otf") format("opentype"), url("Nohemi-Medium-BF6438cc5883899.ttf") format("truetype"); font-weight:500; font-style:normal; font-display:swap; }
+@font-face { font-family:"Nohemi"; src:url("Nohemi-SemiBold-BF6438cc588a48a.otf") format("opentype"), url("Nohemi-SemiBold-BF6438cc588b5e5.ttf") format("truetype"); font-weight:600; font-style:normal; font-display:swap; }
+@font-face { font-family:"Nohemi"; src:url("Nohemi-Bold-BF6438cc5b7b5b5.otf") format("opentype"), url("Nohemi-Bold-BF6438cc5812315.ttf") format("truetype"); font-weight:700; font-style:normal; font-display:swap; }
+@font-face { font-family:"Nohemi"; src:url("Nohemi-ExtraBold-BF6438cc58a4c3c.otf") format("opentype"), url("Nohemi-ExtraBold-BF6438cc5881baf.ttf") format("truetype"); font-weight:800; font-style:normal; font-display:swap; }
+@font-face { font-family:"Nohemi"; src:url("Nohemi-Black-BF6438cc5874bd2.otf") format("opentype"), url("Nohemi-Black-BF6438cc58744d4.ttf") format("truetype"); font-weight:900; font-style:normal; font-display:swap; }
+
+/* DENTON TEST (serif para títulos) */
+@font-face { font-family:"Denton Test"; src:url("Denton Test Thin 100.ttf") format("opentype"); font-weight:100; font-style:normal; font-display:swap; }
+@font-face { font-family:"Denton Test"; src:url("Denton Test Light 300.ttf") format("opentype"); font-weight:300; font-style:normal; font-display:swap; }
+@font-face { font-family:"Denton Test"; src:url("Denton Test Regular 400.ttf") format("opentype"); font-weight:400; font-style:normal; font-display:swap; }
+@font-face { font-family:"Denton Test"; src:url("Denton Test Medium 500.ttf") format("opentype"); font-weight:500; font-style:normal; font-display:swap; }
+@font-face { font-family:"Denton Test"; src:url("Denton Test Bold 700.ttf") format("opentype"); font-weight:700; font-style:normal; font-display:swap; }
+@font-face { font-family:"Denton Test"; src:url("Denton Test ExtraBold 800.ttf") format("opentype"); font-weight:800; font-style:normal; font-display:swap; }
+@font-face { font-family:"Denton Test"; src:url("Denton Test Black 900.ttf") format("opentype"); font-weight:900; font-style:normal; font-display:swap; }
+
+/* =========================================================
+   BASE / VARIABLES
+   ========================================================= */
+
+*{ box-sizing:border-box; margin:0; padding:0; }
+img{ display:block; max-width:100%; height:auto; }
+button{ border:0; cursor:pointer; }
+input,button{ font:inherit; }
+
+:root{
+  --font-sans: "Nohemi", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-serif: "Denton Test", "Times New Roman", Times, serif;
+
+  --cream:#FFF6EB;         /* fondo general crema */
+  --panel:#FBF6F1;         /* panel/tarjetas */
+  --ink:#242424;           /* texto principal */
+  --muted:#6E6A67;         /* texto secundario */
+  --rose:#F5A4B1;          /* acento rosado (MIS XV) */
+  --rose-strong:#E68092;   /* hover rosado fuerte */
+  --icon-bg:#F8D7DD;       /* cuadrito del ícono */
+  --mint:#CFE8DB;          /* botón confirmar */
+  --mint-ink:#204A3C;      /* texto botón */
+  --border:#E8DBCE;        /* bordes suaves */
+}
+
+body{
+  background: var(--cream);
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  min-height:100svh;
+  padding-bottom:20px;
+  font-family:var(--font-sans);
+  color:var(--ink);
+}
+
+/* =========================================================
+   CONTENEDOR
+   ========================================================= */
+
+.container{
+  margin-left: 25px;
+  margin-right: 25px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  width:min(700px,100%);
+  gap:90px;
+  overflow:hidden;
+}
+
+/* =========================================================
+   HEADER / TOP con ilustración de fondo (fondo.png)
+   ========================================================= */
+
+.top{
+  height: fit-content;
+  width:100%;
+  text-align:center;
+}
+
+
+/* =========================================================
+   BLOQUE DE INFORMACIÓN
+   ========================================================= */
+
+.info{
+  width: 70%;
+  background-color:#F9EEDF;
+  display:grid;
+  border-radius:12px;
+}
+
+@media (max-width:550px) {
+  .info{
+    width:100%;
+  }
+}
+
+.info_item{
+  display:grid;
+  grid-template-columns:44px 1fr;
+  gap:12px;
+  align-items:center;
+  padding:15px;
+  border-bottom:.5px solid var(--border);
+}
+
+.info_item:last-child{ border-bottom:none; }
+
+.info_item > img{
+  width:36px; height:36px;
+  border-radius:10px;
+  object-fit:contain;
+  padding:6px;
+}
+
+.item h3{
+  font-size:13px;
+  font-weight:300;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:2px;
+  letter-spacing:.08em;
+}
+
+.item p{
+  font-family: var(--font-serif);
+  letter-spacing: 0.5px;
+  font-weight:400;
+  font-size:16px;
+  color:var(--ink);
+}
+
+/* =========================================================
+   FORMULARIO
+   ========================================================= */
+
+form{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:30px;
+  padding:18px 16px 8px;
+}
+
+form p{
+  font-family: var(--font-serif);
+  letter-spacing: 1px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  width:75%;
+}
+
+form input{
+  font-family: var(--font-sans);
+  font-weight: 300;
+  width:100%;
+  background:var(--cream);
+  border:none;
+  border-bottom:.5px solid var(--border);
+  padding:14px 14px;
+  color:var(--ink);
+  outline:none;
+}
+
+form input::placeholder{
+  color:#9A8F85;
+  letter-spacing:.03em;
+}
+
+form input:focus{ background:#F9EEDF; }
+
+form button{
+  font-family: var(--font-sans);
+  font-size: 18px;
+  width:100%;
+  margin-top:6px;
+  padding:30px;
+  border-radius:12px;
+  background:var(--mint);
+  color:var(--mint-ink);
+  font-weight:300;                
+  letter-spacing: 2px;
+}
+
+form button:hover{ filter:brightness(.98); }
+form button:active{ transform:translateY(1px) scale(.995); }
+
+a{ text-decoration:none; width:100%; }
+
+a button{
+  font-size: 16px;
+  width:100%;
+  margin-top:6px;
+  padding:14px 16px;
+  border-radius:12px;
+  background-color:#F9EEDF;
+  color:var(--ink);
+  font-weight:300;
+  letter-spacing: 2px;
+  text-transform:uppercase;
+}
+
+/*FOOTER / CONTACTO*/
+
+footer{
+  display:flex;
+  flex-direction:column;
+  width:100%;
+  gap:8px;
+}
+
+.contact{ padding:12px; text-align:center; }
+
+.contact h2{
+  letter-spacing:1px;
+  font-size:12px;
+  font-weight:300;
+  color:var(--muted);
+  margin-bottom:4px;
+  text-transform:uppercase;
+}
+
+.contact p{
+  font-family: var(--font-serif);
+  letter-spacing: 2px;
+  font-size:14px;
+  color:var(--ink);
+  letter-spacing: 2px;
+}
+
+
+@media (max-width:360px){
+  .container{ border-radius:12px; }
+  .top{ padding:28px 16px 30px; }
+  .description h2{ font-size:48px; }
+}
+
+@media (min-width:401px){
+  body{ padding-block:28px; }
+}
