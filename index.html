@@ -8,6 +8,9 @@
     <link rel="shortcut icon" type="x-icon" href="icon.png">
 </head>
 <body>
+    <canvas id="confetti-canvas"></canvas>
+
+
     <div class="container">
         <div class="top">
             <img src="fondo.png" alt="">
@@ -39,13 +42,17 @@
                 </div>
             </div>
                 
-            <div class="info_item">    
-                <img src="ubi.png" alt="">
-                <div class="item">
-                    <h3>Lugar</h3>
-                    <p>Complejo recreativo Iplyc Av. Principal 123</p>
-                </div>
+            <div class="info_item">
+                    <img src="ubi.png" alt="">
+                    <div class="item">
+                        <h3>Lugar</h3>
+                        <p>Complejo recreativo Iplyc Av. Principal 123</p>
+                    </div>
             </div>
+        </div>
+
+        <div class="maps">
+            <a href="https://maps.app.goo.gl/v1Bs2rxDdkbMUioS9?g_st=aw" target="_blank">ABRIR EN GOOGLE MAPS</a>
         </div>
 
         <form action="">
@@ -53,23 +60,41 @@
             <input type="text" placeholder="NOMBRE Y APELLIDO">
             <input type="number" placeholder="INVITADOS (CONTANDOTE A VOS)">
             <button type="submit">CONFIRMAR</button>
-            <a href=""><button>NO PODRÉ ASISTIR</button></a>
         </form>
 
+        <div class="gift">
+            <p>SI NO SABES QUE REGALARME PODES COLABORAR PARA CUMPLIR MI SUEÑO</p>
+                <div class="cv">
+                    <p id="cvu-text">laara.rodriguezzz</p>
+                    <button id="copy-btn">COPIAR CVU</button>
+                </div>
+        </div>
 
-        <footer>
-            <div class="contact">
-                <h2>WHATSAPP</h2>
-                <p>3764-000000</p>
-            </div>
-
+        <div class="share">
+            <p>PODES COMPARTIR LAS FOTOS DE LA FIESTA POR WHATSAPP O AL CORREO</p>
+            <a href="https://wa.me/3765387793"><button>COMPARTIR POR WHATSAPP</button></a>
             <div class="contact">
                 <h2>CORREO</h2>
-                <p>TUCORREO@MAIL.COM.AR</p>
+                <p>paky.rodriguez10@gmail.com</p>
             </div>
-        </footer>
+        </div>
 
     </div>
+
+    <audio id="bg-music" autoplay loop>
+    <source src="musica_fondo.mpeg" type="audio/mpeg">
+    </audio>
+
+    <script>
+        document.getElementById("copy-btn").addEventListener("click", function() {
+        const cvu = document.getElementById("cvu-text").innerText;
+        navigator.clipboard.writeText(cvu).then(() => {
+            alert("CVU copiado");
+        }).catch(err => {
+            console.error("Error al copiar: ", err);
+        });
+        });
+        </script>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
@@ -86,6 +111,113 @@
 
         // Initialize Firebase (sin analytics)
         const app = initializeApp(firebaseConfig);
+        </script>
+
+    <script>
+        const canvas = document.getElementById('confetti-canvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let confetti = [];
+
+  function randomColor() {
+    const baseColors = [
+        '#f7cde0', // rosa claro
+        '#f28ca9', // rosa fuerte
+        '#f7d6c1', // durazno pastel
+        '#ffffff', // blanco
+        '#d9d9d9'  // gris suave
+    ];
+    // Convertir a rgba con opacidad 0.35
+    const hex = baseColors[Math.floor(Math.random() * baseColors.length)];
+    const bigint = parseInt(hex.replace('#', ''), 16);
+    const r = (bigint >> 16) & 255;
+    const g = (bigint >> 8) & 255;
+    const b = bigint & 255;
+    return `rgba(${r}, ${g}, ${b}, 0.35)`;
+    }
+
+    function drawConfetti() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    confetti.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, 2 * Math.PI); // círculo
+        ctx.fillStyle = p.color;
+        ctx.fill();
+
+        p.y += p.speed;
+        p.rotation += p.rotationSpeed;
+
+        if (p.y > canvas.height) {
+        p.x = Math.random() * canvas.width;
+        p.y = -10;
+        }
+    });
+
+  requestAnimationFrame(drawConfetti);
+}
+        function createConfettiPiece() {
+        return {
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height - canvas.height,
+            size: Math.random() * 8 + 4,
+            color: randomColor(),
+            speed: Math.random() * 3 + 2,
+            rotation: Math.random() * 360,
+            rotationSpeed: Math.random() * 5
+        };
+        }
+
+        for (let i = 0; i < 150; i++) {
+        confetti.push(createConfettiPiece());
+        }
+
+        function drawConfetti() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        confetti.forEach(p => {
+            ctx.save();
+            ctx.translate(p.x, p.y);
+            ctx.rotate((p.rotation * Math.PI) / 180);
+            ctx.fillStyle = p.color;
+            ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+            ctx.restore();
+
+            p.y += p.speed;
+            p.rotation += p.rotationSpeed;
+
+            if (p.y > canvas.height) {
+            p.x = Math.random() * canvas.width;
+            p.y = -10;
+            }
+        });
+
+        requestAnimationFrame(drawConfetti);
+        }
+
+        drawConfetti();
+
+        window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        });
+        </script>
+
+        <script>
+        window.addEventListener('load', () => {
+        const music = document.getElementById("bg-music");
+
+        // Intenta reproducir apenas carga
+        music.play().catch(() => {
+            // Si el navegador lo bloquea, espera la primera interacción
+            document.addEventListener('click', () => {
+            music.play();
+            }, { once: true });
+        });
+        });
         </script>
 
     <script type="module" src="app.js"></script>
