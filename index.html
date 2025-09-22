@@ -1,225 +1,186 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lara Agustina</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" type="x-icon" href="icon.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lara Agustina</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="shortcut icon" type="image/x-icon" href="icon.png" />
+  <style>
+    /* Asegura el canvas del confeti por encima y sin bloquear clics */
+    #confetti-canvas{
+      position: fixed; inset: 0; width: 100%; height: 100%;
+      pointer-events: none; z-index: 9999;
+    }
+  </style>
 </head>
 <body>
-    <canvas id="confetti-canvas"></canvas>
+  <!-- Confeti -->
+  <canvas id="confetti-canvas"></canvas>
 
-
-    <div class="container">
-        <div class="top">
-            <img src="fondo.png" alt="">
-        </div>
-
-        <div class="info">
-
-            <div class="info_item">    
-                <img src="fecha.png" alt="">
-                <div class="item">
-                    <h3>Fecha</h3>
-                    <p>Sábado, 11 de Octubre de 2025</p>
-                </div>
-            </div>
-
-            <div class="info_item">    
-                <img src="hora.png" alt="">
-                <div class="item">
-                    <h3>Hora</h3>
-                    <p>20:30 hs</p>
-                </div>
-            </div>
-
-            <div class="info_item">    
-                <img src="ropa.png" alt="">
-                <div class="item">
-                    <h3>Vestimenta</h3>
-                    <p>Casual Elegante</p>
-                </div>
-            </div>
-                
-            <div class="info_item">
-                    <img src="ubi.png" alt="">
-                    <div class="item">
-                        <h3>Lugar</h3>
-                        <p>Complejo recreativo Iplyc</p>
-                    </div>
-            </div>
-        </div>
-
-        <div class="maps">
-            <a href="https://maps.app.goo.gl/v1Bs2rxDdkbMUioS9?g_st=aw" target="_blank">ABRIR EN GOOGLE MAPS</a>
-        </div>
-
-        <form action="">
-            <p>COMPLETA LOS DATOS PARA CONFIRMAR TU PRESENCIA</p>
-            <input type="text" placeholder="NOMBRE Y APELLIDO">
-            <input type="number" placeholder="INVITADOS (CONTANDOTE A VOS)">
-            <button type="submit">CONFIRMAR</button>
-        </form>
-
-        <div class="gift">
-            <p>SI NO SABES QUE REGALARME PODES COLABORAR PARA CUMPLIR MI SUEÑO</p>
-                <div class="cv">
-                    <p id="cvu-text">laara.rodriguezzz</p>
-                    <button id="copy-btn">COPIAR CVU</button>
-                </div>
-        </div>
-
-        <div class="share">
-            <p>PODES COMPARTIR LAS FOTOS DE LA FIESTA POR WHATSAPP O AL CORREO</p>
-            <a href="https://wa.me/3765387793"><button>COMPARTIR POR WHATSAPP</button></a>
-            <div class="contact">
-                <h2>CORREO</h2>
-                <p>paky.rodriguez10@gmail.com</p>
-            </div>
-        </div>
-
+  <div class="container">
+    <div class="top">
+      <img src="fondo.png" alt="">
     </div>
 
-    <audio id="bg-music" autoplay loop>
+    <div class="info">
+      <div class="info_item">
+        <img src="fecha.png" alt="">
+        <div class="item">
+          <h3>Fecha</h3>
+          <p>Sábado, 11 de Octubre de 2025</p>
+        </div>
+      </div>
+
+      <div class="info_item">
+        <img src="hora.png" alt="">
+        <div class="item">
+          <h3>Hora</h3>
+          <p>20:30 hs</p>
+        </div>
+      </div>
+
+      <div class="info_item">
+        <img src="ropa.png" alt="">
+        <div class="item">
+          <h3>Vestimenta</h3>
+          <p>Casual Elegante</p>
+        </div>
+      </div>
+
+      <div class="info_item">
+        <img src="ubi.png" alt="">
+        <div class="item">
+          <h3>Lugar</h3>
+          <p>Complejo recreativo Iplyc</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="maps">
+      <a href="https://maps.app.goo.gl/v1Bs2rxDdkbMUioS9?g_st=aw" target="_blank" rel="noopener">ABRIR EN GOOGLE MAPS</a>
+    </div>
+
+    <form>
+      <p>COMPLETÁ LOS DATOS PARA CONFIRMAR TU PRESENCIA</p>
+      <input type="text" placeholder="NOMBRE Y APELLIDO" />
+      <input type="number" placeholder="INVITADOS (CONTÁNDOTE A VOS)" />
+      <button type="submit">CONFIRMAR</button>
+    </form>
+
+    <div class="gift">
+      <p>SI NO SABÉS QUÉ REGALARME PODÉS COLABORAR PARA CUMPLIR MI SUEÑO</p>
+      <div class="cv">
+        <p id="cvu-text">laara.rodriguezzz</p>
+        <button id="copy-btn">COPIAR CVU</button>
+      </div>
+    </div>
+
+    <div class="share">
+      <p>PODÉS COMPARTIR LAS FOTOS DE LA FIESTA POR WHATSAPP O AL CORREO</p>
+      <a href="https://wa.me/3765387793" target="_blank" rel="noopener"><button>COMPARTIR POR WHATSAPP</button></a>
+      <div class="contact">
+        <h2>CORREO</h2>
+        <p>paky.rodriguez10@gmail.com</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Música de fondo -->
+  <audio id="bg-music" autoplay loop>
     <source src="musica_fondo.mpeg" type="audio/mpeg">
-    </audio>
+    Tu navegador no soporta audio.
+  </audio>
 
-    <script>
-        document.getElementById("copy-btn").addEventListener("click", function() {
-        const cvu = document.getElementById("cvu-text").innerText;
-        navigator.clipboard.writeText(cvu).then(() => {
-            alert("CVU copiado");
-        }).catch(err => {
-            console.error("Error al copiar: ", err);
-        });
-        });
-        </script>
+  <!-- Copiar CVU -->
+  <script>
+    document.getElementById("copy-btn").addEventListener("click", function() {
+      const cvu = document.getElementById("cvu-text").innerText.trim();
+      navigator.clipboard.writeText(cvu).then(() => {
+        alert("CVU copiado");
+      }).catch(err => {
+        console.error("Error al copiar: ", err);
+      });
+    });
+  </script>
 
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+  <!-- Confeti redondo pastel con 35% opacidad -->
+  <script>
+    const canvas = document.getElementById('confetti-canvas');
+    const ctx = canvas.getContext('2d');
 
-        const firebaseConfig = {
-            apiKey: "AIzaSyBaERAIcUxOh5ZhidCA40XN8an5O5M5gIE",
-            authDomain: "laraxv-6dd3a.firebaseapp.com",
-            projectId: "laraxv-6dd3a",
-            storageBucket: "laraxv-6dd3a.firebasestorage.app",
-            messagingSenderId: "965965396309",
-            appId: "1:965965396309:web:2c32745c8a5f03d03dd7dc",
-            measurementId: "G-Y1MZ2XSQWC"
-        };
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
 
-        // Initialize Firebase (sin analytics)
-        const app = initializeApp(firebaseConfig);
-        </script>
-
-    <script>
-        const canvas = document.getElementById('confetti-canvas');
-        const ctx = canvas.getContext('2d');
-
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        let confetti = [];
-
-  function randomColor() {
-    const baseColors = [
-        '#f7cde0', // rosa claro
-        '#f28ca9', // rosa fuerte
-        '#f7d6c1', // durazno pastel
-        '#ffffff', // blanco
-        '#d9d9d9'  // gris suave
-    ];
-    // Convertir a rgba con opacidad 0.35
-    const hex = baseColors[Math.floor(Math.random() * baseColors.length)];
-    const bigint = parseInt(hex.replace('#', ''), 16);
-    const r = (bigint >> 16) & 255;
-    const g = (bigint >> 8) & 255;
-    const b = bigint & 255;
-    return `rgba(${r}, ${g}, ${b}, 0.35)`;
+    function randomColor() {
+      const baseColors = ['#f7cde0','#f28ca9','#f7d6c1','#ffffff','#d9d9d9'];
+      const hex = baseColors[Math.floor(Math.random() * baseColors.length)];
+      const n = parseInt(hex.slice(1), 16);
+      const r = (n >> 16) & 255, g = (n >> 8) & 255, b = n & 255;
+      return `rgba(${r}, ${g}, ${b}, 0.35)`; // 35% opacidad
     }
 
-    function drawConfetti() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    const confetti = Array.from({length: 150}, () => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height - canvas.height,
+      size: Math.random() * 8 + 4,
+      color: randomColor(),
+      speed: Math.random() * 3 + 2
+    }));
 
-    confetti.forEach(p => {
+    function drawConfetti() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (const p of confetti) {
         ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, 2 * Math.PI); // círculo
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI*2);
         ctx.fillStyle = p.color;
         ctx.fill();
 
         p.y += p.speed;
-        p.rotation += p.rotationSpeed;
-
         if (p.y > canvas.height) {
-        p.x = Math.random() * canvas.width;
-        p.y = -10;
+          p.x = Math.random() * canvas.width;
+          p.y = -10;
         }
+      }
+      requestAnimationFrame(drawConfetti);
+    }
+    drawConfetti();
+  </script>
+
+  <!-- Forzar autoplay (si el navegador lo permite) -->
+  <script>
+    window.addEventListener('load', () => {
+      const music = document.getElementById("bg-music");
+      music.play().catch(() => {
+        // Si el navegador bloquea el autoplay, se habilita en el primer clic/tap
+        document.addEventListener('click', () => music.play(), { once: true });
+      });
     });
+  </script>
 
-  requestAnimationFrame(drawConfetti);
-}
-        function createConfettiPiece() {
-        return {
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height - canvas.height,
-            size: Math.random() * 8 + 4,
-            color: randomColor(),
-            speed: Math.random() * 3 + 2,
-            rotation: Math.random() * 360,
-            rotationSpeed: Math.random() * 5
-        };
-        }
+  <!-- Firebase App (init sin analytics) -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
 
-        for (let i = 0; i < 150; i++) {
-        confetti.push(createConfettiPiece());
-        }
+    const firebaseConfig = {
+      apiKey: "AIzaSyBaERAIcUxOh5ZhidCA40XN8an5O5M5gIE",
+      authDomain: "laraxv-6dd3a.firebaseapp.com",
+      projectId: "laraxv-6dd3a",
+      storageBucket: "laraxv-6dd3a.firebasestorage.app",
+      messagingSenderId: "965965396309",
+      appId: "1:965965396309:web:2c32745c8a5f03d03dd7dc",
+      measurementId: "G-Y1MZ2XSQWC"
+    };
 
-        function drawConfetti() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // Inicializar Firebase (global para que getApp() funcione en app.js)
+    initializeApp(firebaseConfig);
+  </script>
 
-        confetti.forEach(p => {
-            ctx.save();
-            ctx.translate(p.x, p.y);
-            ctx.rotate((p.rotation * Math.PI) / 180);
-            ctx.fillStyle = p.color;
-            ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
-            ctx.restore();
-
-            p.y += p.speed;
-            p.rotation += p.rotationSpeed;
-
-            if (p.y > canvas.height) {
-            p.x = Math.random() * canvas.width;
-            p.y = -10;
-            }
-        });
-
-        requestAnimationFrame(drawConfetti);
-        }
-
-        drawConfetti();
-
-        window.addEventListener('resize', () => {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        });
-        </script>
-
-        <script>
-        window.addEventListener('load', () => {
-        const music = document.getElementById("bg-music");
-
-        // Intenta reproducir apenas carga
-        music.play().catch(() => {
-            // Si el navegador lo bloquea, espera la primera interacción
-            document.addEventListener('click', () => {
-            music.play();
-            }, { once: true });
-        });
-        });
-        </script>
-
-    <script type="module" src="app.js"></script>
+  <!-- Lógica de Firestore (guardar confirmación) -->
+  <script type="module" src="app.js"></script>
 </body>
 </html>
